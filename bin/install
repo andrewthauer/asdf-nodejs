@@ -235,7 +235,7 @@ install_default_npm_packages() {
   for name in $(cat $default_npm_packages); do
     echo -ne "\nInstalling \e[33m${name}\e[39m npm package... "
 
-    if npm install -g $name > /dev/null 2>&1; then
+    if $(ASDF_NODEJS_VERSION=$ASDF_INSTALL_VERSION npm install -g $name > /dev/null 2>&1); then
       echo -e "\e[32mSUCCESS\e[39m"
     else
       echo -e "\e[31mFAIL\e[39m"
